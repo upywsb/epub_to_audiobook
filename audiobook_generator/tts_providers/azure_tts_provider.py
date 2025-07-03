@@ -20,8 +20,8 @@ MAX_RETRIES = 12  # Max_retries constant for network errors
 class AzureTTSProvider(BaseTTSProvider):
     def __init__(self, config: GeneralConfig):
         # TTS provider specific config
-        if config.language == "zh-CN":
-            config.voice_name = config.voice_name or "zh-CN-YunyeNeural"
+        if config.language == "pl-PL":
+            config.voice_name = config.voice_name or "pl-PL-AgnieszkaNeural"
         else:
             config.voice_name = config.voice_name or "en-US-GuyNeural"
         config.output_format = config.output_format or "audio-24khz-48kbitrate-mono-mp3"
@@ -43,10 +43,10 @@ class AzureTTSProvider(BaseTTSProvider):
             )
 
         self.TOKEN_URL = (
-            f"https://{region}.api.cognitive.microsoft.com/sts/v1.0/issuetoken"
+            f"https://eastus.api.cognitive.microsoft.com/"
         )
         self.TOKEN_HEADERS = {"Ocp-Apim-Subscription-Key": subscription_key}
-        self.TTS_URL = f"https://{region}.tts.speech.microsoft.com/cognitiveservices/v1"
+        self.TTS_URL = f"https://eastus.api.cognitive.microsoft.com/"
 
     def __str__(self) -> str:
         return (
